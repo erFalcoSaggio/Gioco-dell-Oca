@@ -35,7 +35,7 @@ namespace Gioco_dell_Oca
             InitializeComponent();
             CasellaSpeciale += (giocatore, casella, messaggio) =>
             {
-                MessageBox.Show($"Giocatore {giocatore} è finito nella casella {casella}!\n\n{messaggio}");
+                MessageBox.Show($"Giocatore {giocatore} è fermo nella casella {casella}!\n\n{messaggio}");
             };
         }
 
