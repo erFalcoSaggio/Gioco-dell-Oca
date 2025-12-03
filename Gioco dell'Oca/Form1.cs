@@ -24,9 +24,9 @@ namespace Gioco_dell_Oca
         //funzione per dare l'effetto bordo smussato a TUTTI i bottoni
         public void BordiSmussatiAiButton()
         {
-            int radius = 18;
+            int radius = 15;
 
-            foreach (Control c in this.Controls)
+            foreach (Control c in pnl_GestioneBottoni.Controls)
             {
                 if (c is Button btn)
                 {
@@ -37,8 +37,8 @@ namespace Gioco_dell_Oca
                     path.AddArc(0, btn.Height - radius, radius, radius, 90, 90);
                     path.CloseFigure();
                     btn.Region = new Region(path);
-                    btn_IniziaAGiocare.FlatStyle = FlatStyle.Flat;
-                    btn_IniziaAGiocare.FlatAppearance.BorderSize = 0;
+                    btn.FlatStyle = FlatStyle.Flat;
+                    btn.FlatAppearance.BorderSize = 0;
                 }
             }
         }

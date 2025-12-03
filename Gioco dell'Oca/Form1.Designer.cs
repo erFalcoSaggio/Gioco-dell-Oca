@@ -75,7 +75,6 @@
             // swt_Musica
             // 
             swt_Musica.BackColor = Color.FromArgb(211, 234, 248);
-            swt_Musica.CurrentState = global::Controls.Switch.SwitchStates.On;
             swt_Musica.Location = new Point(56, 197);
             swt_Musica.Name = "swt_Musica";
             swt_Musica.Size = new Size(39, 23);
