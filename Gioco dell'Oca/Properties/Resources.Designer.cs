@@ -103,6 +103,26 @@ namespace Gioco_dell_Oca.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap pedone1 {
+            get {
+                object obj = ResourceManager.GetObject("pedone1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap pedone2 {
+            get {
+                object obj = ResourceManager.GetObject("pedone2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap ponte {
             get {
                 object obj = ResourceManager.GetObject("ponte", resourceCulture);

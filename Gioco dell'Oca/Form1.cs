@@ -18,7 +18,6 @@ namespace Gioco_dell_Oca
         {
             TavolaDaGioco tdg = new();
             tdg.ShowDialog();
-            this.Close();
         }
 
         //funzione per dare l'effetto bordo smussato a TUTTI i bottoni
