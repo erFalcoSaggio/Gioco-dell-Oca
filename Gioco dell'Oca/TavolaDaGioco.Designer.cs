@@ -36,15 +36,17 @@
             btn_Tira = new Button();
             lbl_BottoneUniversale = new Label();
             pnl_Inizio = new Panel();
-            lbl_Cella0 = new Label();
-            pct_Pedone1Cella0 = new PictureBox();
             pct_Pedone2Cella0 = new PictureBox();
+            pct_Pedone1Cella0 = new PictureBox();
+            lbl_Cella0 = new Label();
+            lbl_TurnoTitolo = new Label();
+            lbl_TurnoEffettivo = new Label();
             ((System.ComponentModel.ISupportInitialize)dgv_Campo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pct_Pedone1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pct_Pedone2).BeginInit();
             pnl_Inizio.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pct_Pedone1Cella0).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pct_Pedone2Cella0).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pct_Pedone1Cella0).BeginInit();
             SuspendLayout();
             // 
             // dgv_Campo
@@ -111,9 +113,9 @@
             // 
             // btn_Tira
             // 
-            btn_Tira.Location = new Point(64, 381);
+            btn_Tira.Location = new Point(43, 381);
             btn_Tira.Name = "btn_Tira";
-            btn_Tira.Size = new Size(75, 23);
+            btn_Tira.Size = new Size(136, 23);
             btn_Tira.TabIndex = 5;
             btn_Tira.Text = "Tira";
             btn_Tira.UseVisualStyleBackColor = true;
@@ -138,14 +140,15 @@
             pnl_Inizio.Size = new Size(113, 55);
             pnl_Inizio.TabIndex = 7;
             // 
-            // lbl_Cella0
+            // pct_Pedone2Cella0
             // 
-            lbl_Cella0.AutoSize = true;
-            lbl_Cella0.Location = new Point(35, 0);
-            lbl_Cella0.Name = "lbl_Cella0";
-            lbl_Cella0.Size = new Size(42, 15);
-            lbl_Cella0.TabIndex = 0;
-            lbl_Cella0.Text = "Cella 0";
+            pct_Pedone2Cella0.Image = Properties.Resources.pedone2;
+            pct_Pedone2Cella0.Location = new Point(68, 18);
+            pct_Pedone2Cella0.Name = "pct_Pedone2Cella0";
+            pct_Pedone2Cella0.Size = new Size(42, 34);
+            pct_Pedone2Cella0.SizeMode = PictureBoxSizeMode.Zoom;
+            pct_Pedone2Cella0.TabIndex = 8;
+            pct_Pedone2Cella0.TabStop = false;
             // 
             // pct_Pedone1Cella0
             // 
@@ -158,15 +161,33 @@
             pct_Pedone1Cella0.TabIndex = 4;
             pct_Pedone1Cella0.TabStop = false;
             // 
-            // pct_Pedone2Cella0
+            // lbl_Cella0
             // 
-            pct_Pedone2Cella0.Image = Properties.Resources.pedone2;
-            pct_Pedone2Cella0.Location = new Point(68, 18);
-            pct_Pedone2Cella0.Name = "pct_Pedone2Cella0";
-            pct_Pedone2Cella0.Size = new Size(42, 34);
-            pct_Pedone2Cella0.SizeMode = PictureBoxSizeMode.Zoom;
-            pct_Pedone2Cella0.TabIndex = 8;
-            pct_Pedone2Cella0.TabStop = false;
+            lbl_Cella0.AutoSize = true;
+            lbl_Cella0.Location = new Point(35, 0);
+            lbl_Cella0.Name = "lbl_Cella0";
+            lbl_Cella0.Size = new Size(42, 15);
+            lbl_Cella0.TabIndex = 0;
+            lbl_Cella0.Text = "Cella 0";
+            // 
+            // lbl_TurnoTitolo
+            // 
+            lbl_TurnoTitolo.AutoSize = true;
+            lbl_TurnoTitolo.Location = new Point(208, 407);
+            lbl_TurnoTitolo.Name = "lbl_TurnoTitolo";
+            lbl_TurnoTitolo.Size = new Size(76, 15);
+            lbl_TurnoTitolo.TabIndex = 8;
+            lbl_TurnoTitolo.Text = "E' il turno del";
+            lbl_TurnoTitolo.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // lbl_TurnoEffettivo
+            // 
+            lbl_TurnoEffettivo.AutoSize = true;
+            lbl_TurnoEffettivo.Location = new Point(290, 407);
+            lbl_TurnoEffettivo.Name = "lbl_TurnoEffettivo";
+            lbl_TurnoEffettivo.Size = new Size(38, 15);
+            lbl_TurnoEffettivo.TabIndex = 9;
+            lbl_TurnoEffettivo.Text = "label1";
             // 
             // TavolaDaGioco
             // 
@@ -174,6 +195,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(99, 203, 82);
             ClientSize = new Size(800, 450);
+            Controls.Add(lbl_TurnoEffettivo);
+            Controls.Add(lbl_TurnoTitolo);
             Controls.Add(pnl_Inizio);
             Controls.Add(lbl_BottoneUniversale);
             Controls.Add(btn_Tira);
@@ -191,8 +214,8 @@
             ((System.ComponentModel.ISupportInitialize)pct_Pedone2).EndInit();
             pnl_Inizio.ResumeLayout(false);
             pnl_Inizio.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pct_Pedone1Cella0).EndInit();
             ((System.ComponentModel.ISupportInitialize)pct_Pedone2Cella0).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pct_Pedone1Cella0).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -210,5 +233,7 @@
         private PictureBox pct_Pedone2Cella0;
         private PictureBox pct_Pedone1Cella0;
         private Label lbl_Cella0;
+        private Label lbl_TurnoTitolo;
+        private Label lbl_TurnoEffettivo;
     }
 }

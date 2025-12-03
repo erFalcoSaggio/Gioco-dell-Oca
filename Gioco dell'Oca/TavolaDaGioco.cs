@@ -35,14 +35,23 @@ namespace Gioco_dell_Oca
             InitializeComponent();
             CasellaSpeciale += (giocatore, casella, messaggio) =>
             {
-                MessageBox.Show($"Giocatore {giocatore} è fermo nella casella {casella}!\n\n{messaggio}");
+                string testo = "";
+
+                if (casella > 0)
+                    testo += $"Giocatore {giocatore} è arrivato nella casella {casella}!\n\n";
+                else
+                    testo += $"Giocatore {giocatore} è fermo!\n\n";
+
+                testo += messaggio;
+
+                MessageBox.Show(testo);
             };
         }
 
         private void TavolaDaGioco_Load(object sender, EventArgs e)
         {
             CaricaCampo(); // carico il campo da gioco
-
+            AggiornaLabelTurno(); //per correttezza
             // immagini ped
             AggiornaPedina(0, pos1, Properties.Resources.pedone1);
             AggiornaPedina(0, pos2, Properties.Resources.pedone2);
@@ -234,7 +243,7 @@ namespace Gioco_dell_Oca
             //da 1 a 6
             int dado1 = rnd.Next(1, 7);
             int dado2 = rnd.Next(1, 7);
-            int tiro = dado1 + dado2;
+            int tiro = 9;
             tiriFatti++;
 
             // Mostra la somma, come richiesto
@@ -255,6 +264,7 @@ namespace Gioco_dell_Oca
 
 
             turnoGiocatore1 = !turnoGiocatore1; // cambio turno
+            AggiornaLabelTurno();
         }
 
         void MuoviGiocatore(ref int pos, ref int posAltro,
@@ -292,9 +302,21 @@ namespace Gioco_dell_Oca
             //se finisce sopra l'altro → lo manda all'inizio
             if (pos == posAltro)
             {
-                posAltro = 1;
+                int vecchia = posAltro;
+
+                posAltro = 1; //l'altro torna alla casella 1
+
                 MessageBox.Show($"Giocatore {numeroGiocatore} ha mandato l'altro alla casella 1!");
+
+                //capisco quale pedina è quella dell'altro
+                Image pedinaAltro = (numeroGiocatore == 1)
+                    ? Properties.Resources.pedone2   // se muove 1, l'altro è 2
+                    : Properties.Resources.pedone1;  // se muove 2, l'altro è 1
+
+                //agg. grafica
+                AggiornaPedina(vecchia, posAltro, pedinaAltro);
             }
+
 
             // aggiorna pedina graficamente
             Image imgPedina = (numeroGiocatore == 1)
@@ -307,6 +329,9 @@ namespace Gioco_dell_Oca
             if (pos == 63)
             {
                 MessageBox.Show($"HA VINTO IL GIOCATORE {numeroGiocatore} !!!");
+                btn_Tira.Text = "Chiudi";
+                btn_Tira.Click -= btn_Tira_Click;
+                btn_Tira.Click += (s, e) => Close();
             }
         }
 
@@ -363,7 +388,45 @@ namespace Gioco_dell_Oca
 
         private void btn_Tira_Click(object sender, EventArgs e)
         {
+            //check turno
+            int giocatore = turnoGiocatore1 ? 1 : 2;
+
+            //ref a blocchi/prigione
+            ref int blocco = ref (turnoGiocatore1 ? ref blocco1 : ref blocco2);
+            ref bool prigione = ref (turnoGiocatore1 ? ref prigione1 : ref prigione2);
+
+            //SE IL GIOCATORE È BLOCCATO (CASA)
+            if (blocco > 0)
+            {
+                CasellaSpeciale?.Invoke(giocatore, -1,
+                    $"Giocatore {giocatore} è bloccato per altri {blocco} turni!");
+
+                blocco--;
+                turnoGiocatore1 = !turnoGiocatore1; // passa all’altro
+                AggiornaLabelTurno();
+                return;
+            }
+
+            //SE IL GIOCATORE È IN PRIGIONE
+            if (prigione)
+            {
+                CasellaSpeciale?.Invoke(giocatore, 31,
+                    $"Giocatore {giocatore} è in PRIGIONE e non può tirare!");
+
+                turnoGiocatore1 = !turnoGiocatore1; // passa all’altro
+                AggiornaLabelTurno();
+                return;
+            }
+
+            //nessun blocco
             LanciaDadi();
+            AggiornaLabelTurno();
         }
+
+        void AggiornaLabelTurno()
+        {
+            lbl_TurnoEffettivo.Text = turnoGiocatore1 ? "Giocatore 1" : "Giocatore 2";
+        }
+
     }
 }
