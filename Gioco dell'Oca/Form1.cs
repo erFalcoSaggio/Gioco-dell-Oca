@@ -1,10 +1,13 @@
 using System.Drawing.Drawing2D;
+using System.Numerics;
+using System.Media;
 
 
 namespace Gioco_dell_Oca
 {
     public partial class Form1 : Form
     {
+        SoundPlayer sp = new SoundPlayer(Properties.Resources.background_music);
         public Form1()
         {
             InitializeComponent();
@@ -12,7 +15,9 @@ namespace Gioco_dell_Oca
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            sp.PlayLooping();
             BordiSmussatiAiButton();
+
         }
         private void btn_IniziaAGiocare_Click(object sender, EventArgs e)
         {
@@ -42,5 +47,17 @@ namespace Gioco_dell_Oca
             }
         }
 
+        private void btn_Esci_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void chc_Musica_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (chc_Musica.Checked)
+                sp.PlayLooping();   // accende la musica
+            else
+                sp.Stop();          // spegne la musica
+        }
     }
 }

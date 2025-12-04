@@ -31,9 +31,9 @@
             pct_Logo = new PictureBox();
             btn_IniziaAGiocare = new Button();
             pnl_GestioneBottoni = new Panel();
-            swt_Musica = new Controls.Switch();
             lbl_MusicaTitolo = new Label();
             btn_Esci = new Button();
+            chc_Musica = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)pct_Logo).BeginInit();
             pnl_GestioneBottoni.SuspendLayout();
             SuspendLayout();
@@ -63,7 +63,7 @@
             // 
             // pnl_GestioneBottoni
             // 
-            pnl_GestioneBottoni.Controls.Add(swt_Musica);
+            pnl_GestioneBottoni.Controls.Add(chc_Musica);
             pnl_GestioneBottoni.Controls.Add(lbl_MusicaTitolo);
             pnl_GestioneBottoni.Controls.Add(btn_Esci);
             pnl_GestioneBottoni.Controls.Add(btn_IniziaAGiocare);
@@ -71,15 +71,6 @@
             pnl_GestioneBottoni.Name = "pnl_GestioneBottoni";
             pnl_GestioneBottoni.Size = new Size(240, 410);
             pnl_GestioneBottoni.TabIndex = 2;
-            // 
-            // swt_Musica
-            // 
-            swt_Musica.BackColor = Color.FromArgb(211, 234, 248);
-            swt_Musica.Location = new Point(56, 197);
-            swt_Musica.Name = "swt_Musica";
-            swt_Musica.Size = new Size(39, 23);
-            swt_Musica.TabIndex = 6;
-            swt_Musica.Text = "Musica";
             // 
             // lbl_MusicaTitolo
             // 
@@ -102,6 +93,20 @@
             btn_Esci.TabIndex = 3;
             btn_Esci.Text = "Esci";
             btn_Esci.UseVisualStyleBackColor = false;
+            btn_Esci.Click += btn_Esci_Click;
+            // 
+            // chc_Musica
+            // 
+            chc_Musica.CheckAlign = ContentAlignment.MiddleCenter;
+            chc_Musica.Checked = true;
+            chc_Musica.CheckState = CheckState.Checked;
+            chc_Musica.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            chc_Musica.Location = new Point(68, 197);
+            chc_Musica.Name = "chc_Musica";
+            chc_Musica.Size = new Size(27, 28);
+            chc_Musica.TabIndex = 6;
+            chc_Musica.UseVisualStyleBackColor = true;
+            chc_Musica.CheckStateChanged += chc_Musica_CheckStateChanged;
             // 
             // Form1
             // 
@@ -128,6 +133,6 @@
         private Panel pnl_GestioneBottoni;
         private Button btn_Esci;
         private Label lbl_MusicaTitolo;
-        private Controls.Switch swt_Musica;
+        private CheckBox chc_Musica;
     }
 }

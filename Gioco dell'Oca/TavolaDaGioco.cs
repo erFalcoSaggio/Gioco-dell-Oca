@@ -243,7 +243,7 @@ namespace Gioco_dell_Oca
             //da 1 a 6
             int dado1 = rnd.Next(1, 7);
             int dado2 = rnd.Next(1, 7);
-            int tiro = 9;
+            int tiro = dado1 + dado2;
             tiriFatti++;
 
             // Mostra la somma, come richiesto

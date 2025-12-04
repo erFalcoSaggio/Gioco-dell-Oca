@@ -61,6 +61,15 @@ namespace Gioco_dell_Oca.Properties {
         }
         
         /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.IO.UnmanagedMemoryStream simile a System.IO.MemoryStream.
+        /// </summary>
+        public static System.IO.UnmanagedMemoryStream background_music {
+            get {
+                return ResourceManager.GetStream("background music", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap casa {
