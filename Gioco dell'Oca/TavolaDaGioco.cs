@@ -29,6 +29,7 @@ namespace Gioco_dell_Oca
         int tiriFatti = 0;
 
         public event Action<int, int, string> CasellaSpeciale;
+        public event Action<int> VittoriaGiocatore;
 
         public TavolaDaGioco()
         {
@@ -45,6 +46,15 @@ namespace Gioco_dell_Oca
                 testo += messaggio;
 
                 MessageBox.Show(testo);
+            };
+
+            VittoriaGiocatore += (giocatore) =>
+            {
+                MessageBox.Show($"HA VINTO IL GIOCATORE n° {giocatore} !!!");
+
+                btn_Tira.Text = "Chiudi";
+                btn_Tira.Click -= btn_Tira_Click;
+                btn_Tira.Click += (s, e) => Close();
             };
         }
 
@@ -328,10 +338,8 @@ namespace Gioco_dell_Oca
             //vittoria
             if (pos == 63)
             {
-                MessageBox.Show($"HA VINTO IL GIOCATORE {numeroGiocatore} !!!");
-                btn_Tira.Text = "Chiudi";
-                btn_Tira.Click -= btn_Tira_Click;
-                btn_Tira.Click += (s, e) => Close();
+                VittoriaGiocatore?.Invoke(numeroGiocatore);
+                return;
             }
         }
 
